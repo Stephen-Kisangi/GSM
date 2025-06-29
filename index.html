@@ -1139,31 +1139,304 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Testimonials */
-        .testimonials {
-            background: var(--light-gray);
+        .section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            margin: 0 15px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .testimonial-text {
-            font-style: italic;
-            color: #555;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+        /* Modern Testimonials Section */
+         .section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--primary-blue);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
+        /* Modern Testimonials Section */
+        /* Improved Testimonials CSS for Grammer Spire Academy */
+
+/* Section Styling */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-yellow), var(--primary-blue));
+    border-radius: 2px;
+}
+
+.section-title p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Modern Testimonials Grid */
+.testimonials {
+    background: var(--light-gray);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(74, 144, 226, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-yellow), var(--accent-green));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.testimonial-card:hover::before {
+    opacity: 1;
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    opacity: 0.2;
+    margin-bottom: 1rem;
+    font-family: serif;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 1rem;
+    position: relative;
+    padding-top: 1rem;
+}
+
+.testimonial-author::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--accent-yellow);
+    border-radius: 1px;
+}
+
+/* Auto-scrolling testimonials for mobile */
+.testimonials-carousel {
+    display: none;
+    overflow: hidden;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.testimonials-track {
+    display: flex;
+    animation: scroll-testimonials 20s linear infinite;
+    width: calc(300% + 4rem);
+}
+
+.testimonials-track:hover {
+    animation-play-state: paused;
+}
+
+.testimonial-slide {
+    flex: 0 0 calc(33.333% - 1.333rem);
+    margin: 0 0.667rem;
+}
+
+@keyframes scroll-testimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+}
+
+/* Fade in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 50px 0;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
+    
+    .section-title p {
+        font-size: 1rem;
+    }
+    
+    /* Switch to carousel on mobile */
+    .testimonials-grid {
+        display: none;
+    }
+    
+    .testimonials-carousel {
+        display: block;
+    }
+    
+    .testimonial-card {
+        padding: 2rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 40px 0;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+        min-height: 80px;
+    }
+    
+    .quote-icon {
+        font-size: 2.5rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .testimonials-track {
+        animation: none;
+    }
+    
+    .testimonial-card {
+        transition: none;
+    }
+    
+    .fade-in {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .testimonial-card {
+        border: 2px solid var(--primary-blue);
+    }
+    
+    .testimonial-text {
+        color: #000;
+    }
+}
+
+
 
         /* Gallery Preview */
         .gallery-grid {
@@ -1570,35 +1843,83 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section testimonials fade-in">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Parents Say</h2>
-                <p>Hear from our satisfied parents about their experience with us</p>
+   <!-- Improved Testimonials Section for Grammer Spire Academy -->
+<section class="section testimonials fade-in">
+    <div class="container">
+        <div class="section-title">
+            <h2>What Parents Say</h2>
+            <p>Hear from our satisfied parents about their experience with us</p>
+        </div>
+        
+        <!-- Desktop/Tablet Grid Layout -->
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">The teachers at Grammer Spire Academy truly care about each child's development. My daughter has grown so much academically and socially.</p>
+                <div class="testimonial-author">Mrs. Sarah Kimani</div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card fade-in">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">Excellent implementation of CBC curriculum. The school prepares children well for their future academic journey.</p>
+                <div class="testimonial-author">Mr. John Mwangi</div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">A nurturing environment where children feel safe to learn and explore. The co-curricular activities are fantastic!</p>
+                <div class="testimonial-author">Mrs. Grace Ochieng</div>
+            </div>
+        </div>
+        
+        <!-- Mobile Carousel Layout -->
+        <div class="testimonials-carousel">
+            <div class="testimonials-track">
+                <div class="testimonial-slide">
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"The teachers at Grammer Spire Academy truly care about each child's development. My daughter has grown so much academically and socially."</p>
-                        <div class="testimonial-author">- Mrs. Sarah Kimani</div>
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">The teachers at Grammer Spire Academy truly care about each child's development. My daughter has grown so much academically and socially.</p>
+                        <div class="testimonial-author">Mrs. Sarah Kimani</div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-slide">
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"Excellent implementation of CBC curriculum. The school prepares children well for their future academic journey."</p>
-                        <div class="testimonial-author">- Mr. John Mwangi</div>
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">Excellent implementation of CBC curriculum. The school prepares children well for their future academic journey.</p>
+                        <div class="testimonial-author">Mr. John Mwangi</div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="testimonial-slide">
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"A nurturing environment where children feel safe to learn and explore. The co-curricular activities are fantastic!"</p>
-                        <div class="testimonial-author">- Mrs. Grace Ochieng</div>
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">A nurturing environment where children feel safe to learn and explore. The co-curricular activities are fantastic!</p>
+                        <div class="testimonial-author">Mrs. Grace Ochieng</div>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">The teachers at Grammer Spire Academy truly care about each child's development. My daughter has grown so much academically and socially.</p>
+                        <div class="testimonial-author">Mrs. Sarah Kimani</div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">Excellent implementation of CBC curriculum. The school prepares children well for their future academic journey.</p>
+                        <div class="testimonial-author">Mr. John Mwangi</div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">A nurturing environment where children feel safe to learn and explore. The co-curricular activities are fantastic!</p>
+                        <div class="testimonial-author">Mrs. Grace Ochieng</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Gallery Preview -->
     <section class="section fade-in" id="gallery">
@@ -1769,6 +2090,145 @@
         
         aboutTextScrollObserver.observe(aboutTextElement);
     }
+
+
+    /* Enhanced Testimonials JavaScript for Grammer Spire Academy */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced accessibility and interaction
+    initializeTestimonials();
+});
+
+function initializeTestimonials() {
+    const track = document.querySelector('.testimonials-track');
+    const cards = document.querySelectorAll('.testimonial-card');
+    
+    // Pause animation on focus for accessibility
+    if (track) {
+        track.addEventListener('focusin', () => {
+            track.style.animationPlayState = 'paused';
+        });
+        
+        track.addEventListener('focusout', () => {
+            track.style.animationPlayState = 'running';
+        });
+        
+        // Pause on hover for better readability
+        track.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
+        
+        track.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
+    }
+    
+    // Add keyboard navigation for testimonial cards
+    cards.forEach((card, index) => {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-label', `Testimonial ${index + 1}`);
+        
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.focus();
+                // Optional: Add click behavior here if needed
+            }
+        });
+    });
+    
+    // Add intersection observer for fade-in animation
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Observe fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    }
+    
+    // Touch support for mobile carousel
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    if (track) {
+        track.addEventListener('touchstart', handleTouchStart, { passive: true });
+        track.addEventListener('touchmove', handleTouchMove, { passive: true });
+        track.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+    
+    function handleTouchStart(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        track.style.animationPlayState = 'paused';
+    }
+    
+    function handleTouchMove(e) {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+    }
+    
+    function handleTouchEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diffX = startX - currentX;
+        
+        // Resume animation after touch interaction
+        setTimeout(() => {
+            track.style.animationPlayState = 'running';
+        }, 1000);
+    }
+}
+
+// Optional: Add function to dynamically add testimonials
+function addTestimonial(text, author) {
+    const grid = document.querySelector('.testimonials-grid');
+    const carousel = document.querySelector('.testimonials-track');
+    
+    if (!grid || !carousel) return;
+    
+    // Create testimonial card HTML
+    const testimonialHTML = `
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">${text}</p>
+        <div class="testimonial-author">${author}</div>
+    `;
+    
+    // Add to grid
+    const gridCard = document.createElement('div');
+    gridCard.className = 'testimonial-card fade-in';
+    gridCard.innerHTML = testimonialHTML;
+    grid.appendChild(gridCard);
+    
+    // Add to carousel (add twice for seamless loop)
+    for (let i = 0; i < 2; i++) {
+        const carouselSlide = document.createElement('div');
+        carouselSlide.className = 'testimonial-slide';
+        const carouselCard = document.createElement('div');
+        carouselCard.className = 'testimonial-card';
+        carouselCard.innerHTML = testimonialHTML;
+        carouselSlide.appendChild(carouselCard);
+        carousel.appendChild(carouselSlide);
+    }
+    
+    // Reinitialize functionality for new cards
+    initializeTestimonials();
+}
+
+
     
     // Enhanced parallax scroll effect
     window.addEventListener('scroll', function() {
@@ -2080,6 +2540,292 @@
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'all 0.6s ease';
             cardObserver.observe(card);
+        });
+
+
+
+
+         class TestimonialsCarousel {
+            constructor() {
+                this.track = document.getElementById('testimonials-track');
+                this.dots = document.querySelectorAll('.nav-dot');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.currentSlide = 0;
+                this.totalSlides = 3;
+                this.isAutoPlaying = true;
+                this.autoPlayInterval = null;
+                this.scrollTimeout = null;
+                this.isMobile = window.innerWidth <= 768;
+                this.cardWidth = this.isMobile ? window.innerWidth - 40 : 390; // card width + gap
+                this.startX = 0;
+                this.currentX = 0;
+                this.isDragging = false;
+
+                this.init();
+            }
+
+            init() {
+                this.setupIntersectionObserver();
+                this.setupScrollListener();
+                this.setupDotNavigation();
+                this.setupMobileNavigation();
+                this.setupTouchGestures();
+                this.setupResizeListener();
+                this.startAutoPlay();
+            }
+
+            setupResizeListener() {
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        this.isMobile = window.innerWidth <= 768;
+                        this.cardWidth = this.isMobile ? window.innerWidth - 40 : 390;
+                        this.goToSlide(this.currentSlide, false);
+                    }, 150);
+                });
+            }
+
+            setupMobileNavigation() {
+                this.prevBtn.addEventListener('click', () => {
+                    this.goToPrevSlide();
+                    this.resetAutoPlay();
+                });
+
+                this.nextBtn.addEventListener('click', () => {
+                    this.goToNextSlide();
+                    this.resetAutoPlay();
+                });
+            }
+
+            setupTouchGestures() {
+                this.track.addEventListener('touchstart', (e) => {
+                    this.startX = e.touches[0].clientX;
+                    this.isDragging = true;
+                    this.stopAutoPlay();
+                }, { passive: true });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (!this.isDragging) return;
+                    this.currentX = e.touches[0].clientX;
+                }, { passive: true });
+
+                this.track.addEventListener('touchend', () => {
+                    if (!this.isDragging) return;
+                    
+                    const diff = this.startX - this.currentX;
+                    const threshold = 50;
+
+                    if (Math.abs(diff) > threshold) {
+                        if (diff > 0) {
+                            this.goToNextSlide();
+                        } else {
+                            this.goToPrevSlide();
+                        }
+                    }
+
+                    this.isDragging = false;
+                    this.resetAutoPlay();
+                });
+
+                // Mouse events for desktop
+                this.track.addEventListener('mousedown', (e) => {
+                    if (this.isMobile) return;
+                    this.startX = e.clientX;
+                    this.isDragging = true;
+                    this.stopAutoPlay();
+                });
+
+                this.track.addEventListener('mousemove', (e) => {
+                    if (!this.isDragging || this.isMobile) return;
+                    this.currentX = e.clientX;
+                });
+
+                this.track.addEventListener('mouseup', () => {
+                    if (!this.isDragging || this.isMobile) return;
+                    
+                    const diff = this.startX - this.currentX;
+                    const threshold = 50;
+
+                    if (Math.abs(diff) > threshold) {
+                        if (diff > 0) {
+                            this.goToNextSlide();
+                        } else {
+                            this.goToPrevSlide();
+                        }
+                    }
+
+                    this.isDragging = false;
+                    this.resetAutoPlay();
+                });
+
+                this.track.addEventListener('mouseleave', () => {
+                    if (this.isDragging) {
+                        this.isDragging = false;
+                        this.resetAutoPlay();
+                    }
+                });
+            }
+
+            goToPrevSlide() {
+                this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.totalSlides - 1;
+                this.goToSlide(this.currentSlide, true);
+            }
+
+            goToNextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.goToSlide(this.currentSlide, true);
+            }
+
+            setupIntersectionObserver() {
+                const options = {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -100px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('testimonials-section-visible');
+                            if (!this.isMobile) {
+                                this.startAutoPlay();
+                            }
+                        } else {
+                            entry.target.classList.remove('testimonials-section-visible');
+                            this.stopAutoPlay();
+                        }
+                    });
+                }, options);
+
+                observer.observe(document.querySelector('.testimonials'));
+            }
+
+            setupScrollListener() {
+                if (this.isMobile) return; // Disable scroll-based navigation on mobile
+                
+                let ticking = false;
+                
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            this.handleScroll();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+            }
+
+            handleScroll() {
+                if (this.isMobile) return;
+                
+                const section = document.querySelector('.testimonials');
+                const rect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height)));
+                    const targetSlide = Math.floor(progress * this.totalSlides);
+                    
+                    if (targetSlide !== this.currentSlide && targetSlide < this.totalSlides) {
+                        this.goToSlide(targetSlide, false);
+                    }
+
+                    this.pauseAutoPlayTemporarily();
+                }
+            }
+
+            pauseAutoPlayTemporarily() {
+                this.stopAutoPlay();
+                
+                clearTimeout(this.scrollTimeout);
+                this.scrollTimeout = setTimeout(() => {
+                    if (this.isInViewport() && !this.isMobile) {
+                        this.startAutoPlay();
+                    }
+                }, 2000);
+            }
+
+            isInViewport() {
+                const section = document.querySelector('.testimonials');
+                const rect = section.getBoundingClientRect();
+                return (rect.top < window.innerHeight && rect.bottom > 0);
+            }
+
+            setupDotNavigation() {
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        this.goToSlide(index, true);
+                        this.resetAutoPlay();
+                    });
+                });
+            }
+
+            goToSlide(index, smooth = true) {
+                this.currentSlide = index;
+                const offset = -(index * this.cardWidth);
+                
+                if (smooth) {
+                    this.track.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                } else {
+                    this.track.style.transition = 'transform 0.3s ease-out';
+                }
+                
+                this.track.style.transform = `translateX(${offset}px)`;
+                this.updateDots();
+            }
+
+            updateDots() {
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+            }
+
+            startAutoPlay() {
+                if (this.autoPlayInterval || this.isMobile) return;
+                
+                this.autoPlayInterval = setInterval(() => {
+                    if (this.isInViewport()) {
+                        this.goToNextSlide();
+                    }
+                }, 4000);
+            }
+
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+
+            resetAutoPlay() {
+                this.stopAutoPlay();
+                if (!this.isMobile) {
+                    setTimeout(() => {
+                        if (this.isInViewport()) {
+                            this.startAutoPlay();
+                        }
+                    }, 1000);
+                }
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new TestimonialsCarousel();
+        });
+
+        // Pause auto-play when page is not visible
+        document.addEventListener('visibilitychange', () => {
+            const carousel = document.querySelector('.testimonials');
+            if (carousel) {
+                if (document.hidden) {
+                    carousel.classList.add('paused');
+                } else {
+                    carousel.classList.remove('paused');
+                }
+            }
         });
 
         
