@@ -1485,53 +1485,235 @@
         }
 
         /* CTA Section */
+        /* Modern CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-blue), #357ABD);
-            color: white;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(39, 174, 96, 0.9) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(255, 255, 255, 0.8) 0%, transparent 55%),
+                radial-gradient(ellipse at 20% 80%, rgba(245, 215, 110, 0.5) 0%, transparent 45%),
+                radial-gradient(ellipse at 80% 20%, rgba(231, 76, 60, 0.4) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(74, 144, 226, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(39, 174, 96, 0.7) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(39, 174, 96, 0.5) 100%);
+            padding: 80px 0;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 0 20px;
+            box-shadow: 0 15px 40px rgba(39, 174, 96, 0.15);
+        }
+
+        /* Subtle center clearing effect */
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            backdrop-filter: blur(20px);
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
+            color: rgba(51, 51, 51, 0.8);
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: rgba(39, 174, 96, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            color: rgba(249, 253, 251, 0.9);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .cta-section h2 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--primary-blue) (51, 51, 51, 0.9);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            text-shadow: 0 2px 4px rgba(249, 54, 20, 0.3);
         }
 
         .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
         .btn-cta {
-            background: white;
-            color: var(--primary-blue);
-            padding: 15px 40px;
-            border-radius: 30px;
+            background: rgba(39, 174, 96, 0.9);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(39, 174, 96, 0.7);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(39, 174, 96, 0.25);
+        }
+
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-cta:hover::before {
+            left: 100%;
         }
 
         .btn-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
             text-decoration: none;
             color: var(--primary-blue);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
-          .main-content {
-            flex: 1;
-            padding: 50px 20px;
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+        .cta-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .feature-item {
             text-align: center;
-            color: #666;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .feature-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-yellow);
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 50px 0;
+                margin: 0 10px;
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-section {
+                padding: 40px 0;
+            }
+
+            .btn-cta {
+                padding: 16px 35px;
+                font-size: 1rem;
+            }
         }
 
         /* Bright & Cheerful Footer */
@@ -2352,11 +2534,23 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="section cta-section fade-in" id="contact">
+    <section class="cta-section" id="contact">
         <div class="container">
-            <h2>Join Grammer Spire Academy Today</h2>
-            <p>Give your child the foundation for a remarkable future</p>
-            <a href="#contact" class="btn-cta">Contact Us</a>
+            <div class="cta-content">
+                <div class="cta-badge">
+                    <i class="fas fa-heart"></i> Where Young Minds Flourish
+                </div>
+                
+                <h2>Enroll Your Child at Grammer Spire Academy</h2>
+                
+                <p>Build the perfect foundation for your child's educational journey with our caring teachers and nurturing environment.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-cta">
+                        Schedule a Visit
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
