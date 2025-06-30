@@ -1521,93 +1521,472 @@
             color: var(--primary-blue);
         }
 
-        /* Footer */
+          .main-content {
+            flex: 1;
+            padding: 50px 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Bright & Cheerful Footer */
         .footer {
-            background: #2c3e50;
-            color: white;
-            padding: 50px 0 20px;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(248, 249, 250, 0.8) 100%);
+            position: relative;
+            overflow: hidden;
+            margin-top: 50px;
         }
 
-        .footer h5 {
-            color: var(--accent-yellow);
-            margin-bottom: 1rem;
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-yellow), var(--accent-green), var(--accent-red));
+        }
+
+        .footer::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -100px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
+        }
+
+        .footer-content {
+            padding: 60px 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer-section h5 {
+            color: var(--text-dark);
+            margin-bottom: 25px;
             font-weight: 600;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        .footer ul {
+        .footer-section h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .footer-section:nth-child(1) h5::after { background: var(--primary-blue); }
+        .footer-section:nth-child(2) h5::after { background: var(--accent-green); }
+        .footer-section:nth-child(3) h5::after { background: var(--accent-red); }
+        .footer-section:nth-child(4) h5::after { background: var(--accent-yellow); }
+
+        .footer-section:hover h5::after {
+            width: 80px;
+        }
+
+        .footer-section:nth-child(1) h5 i { color: var(--primary-blue); }
+        .footer-section:nth-child(2) h5 i { color: var(--accent-green); }
+        .footer-section:nth-child(3) h5 i { color: var(--accent-red); }
+        .footer-section:nth-child(4) h5 i { color: var(--accent-yellow); }
+
+        .footer-section h5 i {
+            font-size: 1.5rem;
+            padding: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .footer-section:nth-child(1) h5 i { background: rgba(74, 144, 226, 0.1); }
+        .footer-section:nth-child(2) h5 i { background: rgba(39, 174, 96, 0.1); }
+        .footer-section:nth-child(3) h5 i { background: rgba(231, 76, 60, 0.1); }
+        .footer-section:nth-child(4) h5 i { background: rgba(245, 215, 110, 0.2); }
+
+        .footer-section:hover h5 i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .footer-section p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul {
             list-style: none;
             padding: 0;
         }
 
-        .footer ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer ul li a:hover {
-            color: white;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--primary-blue);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 10px;
+        .footer-section ul li {
+            margin-bottom: 15px;
             transition: all 0.3s ease;
         }
 
-        .social-icons a:hover {
+        .footer-section ul li:hover {
+            transform: translateX(10px);
+        }
+
+        .footer-section ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            padding: 10px 0;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .footer-section ul li a::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .footer-section ul li a:hover::before {
+            width: 30px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-blue);
+            padding-left: 35px;
+        }
+
+        .footer-section ul li a i {
+            font-size: 1rem;
+            width: 20px;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover i {
+            transform: scale(1.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            padding-left: 15px;
+        }
+
+        .contact-item:hover {
+            border-left-color: var(--accent-red);
+            transform: translateX(8px);
+            background: rgba(231, 76, 60, 0.02);
+        }
+
+        .contact-item i {
+            color: var(--accent-red);
+            font-size: 1.3rem;
+            margin-top: 2px;
+            min-width: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.1);
+        }
+
+        .contact-item span {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 2px dotted rgba(245, 215, 110, 0.4);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .hours-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .hours-item:hover {
+            padding-left: 10px;
+            background: rgba(245, 215, 110, 0.05);
+            border-radius: 8px;
+        }
+
+        .hours-day {
+            color: var(--text-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hours-day i {
+            color: var(--accent-yellow);
+            font-size: 1.1rem;
+        }
+
+        .hours-time {
+            color: var(--text-muted);
+            font-weight: 500;
+            background: rgba(245, 215, 110, 0.15);
+            padding: 6px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(245, 215, 110, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .hours-item:hover .hours-time {
             background: var(--accent-yellow);
-            transform: translateY(-3px);
+            color: var(--text-dark);
+            transform: scale(1.05);
         }
 
+        /* Colorful Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icons a:nth-child(1) { background: linear-gradient(135deg, #3b5998, #4267B2); }
+        .social-icons a:nth-child(2) { background: linear-gradient(135deg, #1da1f2, #0d8bd9); }
+        .social-icons a:nth-child(3) { background: linear-gradient(135deg, #e4405f, #fd1d1d, #fcb045); }
+        .social-icons a:nth-child(4) { background: linear-gradient(135deg, #0077b5, #005885); }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .social-icons a:hover::before {
+            left: 100%;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bright Footer Bottom */
         .footer-bottom {
-            border-top: 1px solid #34495e;
-            margin-top: 2rem;
-            padding-top: 1rem;
+            border-top: 4px solid var(--accent-yellow);
+            padding: 30px 0;
             text-align: center;
-            color: #bdc3c7;
+            background: linear-gradient(90deg, rgba(245, 215, 110, 0.1), rgba(74, 144, 226, 0.05), rgba(39, 174, 96, 0.1));
+            margin-top: 30px;
+            position: relative;
         }
 
-        /* Back to Top Button */
+        .footer-bottom::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-yellow), var(--primary-blue), var(--accent-green), var(--accent-red));
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .footer-bottom p {
+            color: var(--text-dark);
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Fun Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-blue);
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--accent-green), #2ecc71);
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 1000;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
         }
 
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
+            animation: bounce 2s infinite;
         }
 
         .back-to-top:hover {
-            background: #357ABD;
-            transform: translateY(-3px);
+            background: linear-gradient(135deg, var(--primary-blue), #357ABD);
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.4);
         }
 
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-content {
+                padding: 40px 0 20px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .social-icons a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .back-to-top {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.2rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .hours-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px 0;
+            }
+
+            .footer-section ul li a:hover {
+                padding-left: 25px;
+            }
+
+            .footer-section ul li a:hover::before {
+                width: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .footer-section h5 {
+                font-size: 1.2rem;
+            }
+
+            .social-icons a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .footer-grid {
+                gap: 30px;
+            }
+        }
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-content h1 {
@@ -1981,59 +2360,85 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Child-Friendly Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <h5>Grammer Spire Academy</h5>
-                    <p>Nurturing excellence in education since our establishment. We are committed to developing well-rounded, confident individuals.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h5><i class="fas fa-graduation-cap"></i>Grammer Spire Academy</h5>
+                        <p>Nurturing excellence in education since our establishment. We are committed to developing well-rounded, confident individuals who will make a positive impact in their communities and beyond.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h5><i class="fas fa-compass"></i>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+                            <li><a href="#about"><i class="fas fa-heart"></i>About Us</a></li>
+                            <li><a href="#academics"><i class="fas fa-book-open"></i>Academics</a></li>
+                            <li><a href="#admissions"><i class="fas fa-user-plus"></i>Admissions</a></li>
+                            <li><a href="#gallery"><i class="fas fa-camera"></i>Gallery</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h5><i class="fas fa-map-marker-alt"></i>Contact Info</h5>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mlolongo, Phase 3<br>Machakos County, Kenya</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+254 XXX XXX XXX</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@grammerspire.ac.ke</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <span>www.grammerspire.ac.ke</span>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h5><i class="fas fa-clock"></i>School Hours</h5>
+                        <div class="hours-item">
+                            <span class="hours-day"><i class="fas fa-calendar-day"></i>Monday - Friday</span>
+                            <span class="hours-time">7:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="hours-day"><i class="fas fa-calendar-week"></i>Saturday</span>
+                            <span class="hours-time">8:00 AM - 1:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="hours-day"><i class="fas fa-calendar"></i>Sunday</span>
+                            <span class="hours-time">Closed</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="hours-day"><i class="fas fa-business-time"></i>Office Hours</span>
+                            <span class="hours-time">8:00 AM - 4:00 PM</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#academics">Academics</a></li>
-                        <li><a href="#admissions">Admissions</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>Contact Info</h5>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Mlolongo, Phase 3, Machakos County</li>
-                        <li><i class="fas fa-phone"></i> +254 XXX XXX XXX</li>
-                        <li><i class="fas fa-envelope"></i> info@grammerspire.ac.ke</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>School Hours</h5>
-                    <ul>
-                        <li>Monday - Friday: 7:00 AM - 5:00 PM</li>
-                        <li>Saturday: 8:00 AM - 1:00 PM</li>
-                        <li>Sunday: Closed</li>
-                        <li>Office Hours: 8:00 AM - 4:00 PM</li>
-                    </ul>
-                </div>
             </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2025 Grammer Spire Academy. All rights reserved. | Designed with excellence in mind.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
+    <!-- Fun Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
     </button>
-
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
